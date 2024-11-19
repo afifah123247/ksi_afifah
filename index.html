@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KELOMPOK WEBSITE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        nav {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+        }
+
+        .hero {
+            padding: 5rem 5%;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        .highlight {
+            color: #ffb6c1;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.8;
+            letter-spacing: 2px;
+        }
+
+        .members-grid {
+            padding: 5rem 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .member-card {
+            background-color: #262626;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .member-preview {
+            margin-bottom: 1.5rem;
+        }
+
+        .member-preview img {
+            width: 100%;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .member-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: #ffb6c1;
+            margin-bottom: 1.5rem;
+        }
+
+        .view-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: white;
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 2rem;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .view-button:hover {
+            transform: translateY(-2px);
+        }
+
+
+        /* Loading screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .loading-icon {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+        }
+
+        .loading-square {
+            width: 12px;
+            height: 12px;
+            background-color: #4CAF50;
+            animation: pulse 1.5s infinite;
+        }
+
+        .loading-square:nth-child(2) { background-color: #2196F3; }
+        .loading-square:nth-child(3) { background-color: #F44336; }
+        .loading-square:nth-child(4) { background-color: #FFC107; }
+        .loading-square:nth-child(5) { background-color: #00BCD4; }
+        .loading-square:nth-child(6) { background-color: #E91E63; }
+        .loading-square:nth-child(7) { background-color: #3F51B5; }
+        .loading-square:nth-child(8) { background-color: #FF9800; }
+        .loading-square:nth-child(9) { background-color: #9C27B0; }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        /* Additional story view styles */
+        .story-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .story-view {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            overflow-x: auto;
+            background: #111;
+        }
+
+        .story-card {
+            flex: 0 0 auto;
+            width: 300px;
+            transform: perspective(1000px) rotateY(30deg);
+            transition: transform 0.3s;
+        }
+
+        .story-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .project-content {
+            padding: 40px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .info-section h3 {
+            color: #4fd1c5;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .info-section p {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .other-stories {
+            padding: 40px 5%;
+        }
+
+        .stories-title {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        .stories-title span {
+            color: #ffb6c1;
+            display: block;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .story-item {
+            background: #262626;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .story-item img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .story-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .story-item p {
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .open-story-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: white;
+            color: black;
+            text-decoration: none;
+            border-radius: 24px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .open-story-btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", ()=> {
+            const loader = document.querySelector('.loading-screen')
+            function loadingScreen() {
+                // window.setTimeout('5000')
+                loader.remove()
+                console.log('test')
+            }
+            window.setTimeout(loadingScreen, '4000')
+        })
+    </script>
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-icon">
+            <div class="loading-square"></div>
+            <div class="loading-square"></div>
+            <div class="loading-square"></div>
+            <div class="loading-square"></div>
+            <div class="loading-square"></div>
+            <div class="loading-square"></div>
+            <div class="loading-square"></div>
+            <div class="loading-square"></div>
+            <div class="loading-square"></div>
+        </div>
+    </div>
+    <nav>
+        <div class="logo">Blog</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#members">Members</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>
+            WE ARE<br>
+            HISTORY<br>
+            ABOUT <span class="highlight">MEMBER</span><br>
+            OUR GROUP
+        </h1>
+        <div class="subtitle">HISTORY HOBBY</div>
+    </section>
+
+    <section class="members-grid" id="members">
+        <div class="member-card">
+            <div class="profile-image">
+                <img src="images/sampul ipeh.jpg" alt="Ipeh" height="300">
+            </div>
+            <h2 class="member-title">DEYSILLA AFIFAH FERIZ</h2>
+            <p class="member-role">Videography</p>
+            <a href="member1.html" class="view-button">VIEW STORY</a>
+        </div>
+
+        <div class="member-card">
+            <div class="profile-image">
+                <img src="images/sampul mikel.jpg" alt= "Michael" height="300">
+            </div>
+            <h2 class="member-title">BENEDIKTUS MICHAEL</h2>
+            <p class="member-role">Play Guitar</p>
+            <a href="member2.html" class="view-button">VIEW STORY</a>
+        </div>
+
+        <div class="member-card">
+            <div class="profile-image">
+                <img src="images/sampul siska.jpg" alt="Siska" height="300">
+            </div>
+            <h2 class="member-title">SISKA FATIKAH</h2>
+            <p class="member-role">Reading Book</p>
+            <a href="member3.html" class="view-button">VIEW STORY</a>
+        </div>
+    </section>
+</body>
+
+</html>
