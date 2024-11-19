@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamari - Travel Stories</title>
+    <title>Siska - Travel Stories</title>
     <style>
         * {
             margin: 0;
@@ -17,7 +17,49 @@
             color: white;
             line-height: 1.6;
         }
+        /* Loading screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
+        }
 
+        .loading-icon {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+        }
+
+        .loading-square {
+            width: 12px;
+            height: 12px;
+            background-color: #4CAF50;
+            animation: pulse 1.5s infinite;
+        }
+
+        .loading-square:nth-child(2) { background-color: #2196F3; }
+        .loading-square:nth-child(3) { background-color: #F44336; }
+        .loading-square:nth-child(4) { background-color: #FFC107; }
+        .loading-square:nth-child(5) { background-color: #00BCD4; }
+        .loading-square:nth-child(6) { background-color: #E91E63; }
+        .loading-square:nth-child(7) { background-color: #3F51B5; }
+        .loading-square:nth-child(8) { background-color: #FF9800; }
+        .loading-square:nth-child(9) { background-color: #9C27B0; }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
         nav {
             padding: 2rem 5%;
             display: flex;
@@ -209,163 +251,6 @@
                 grid-template-columns: 1fr;
             }
         }
-
-
-        /* Loading screen */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 1;
-            transition: opacity 0.5s ease-out;
-        }
-
-        .loading-icon {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 4px;
-        }
-
-        .loading-square {
-            width: 12px;
-            height: 12px;
-            background-color: #4CAF50;
-            animation: pulse 1.5s infinite;
-        }
-
-        .loading-square:nth-child(2) { background-color: #2196F3; }
-        .loading-square:nth-child(3) { background-color: #F44336; }
-        .loading-square:nth-child(4) { background-color: #FFC107; }
-        .loading-square:nth-child(5) { background-color: #00BCD4; }
-        .loading-square:nth-child(6) { background-color: #E91E63; }
-        .loading-square:nth-child(7) { background-color: #3F51B5; }
-        .loading-square:nth-child(8) { background-color: #FF9800; }
-        .loading-square:nth-child(9) { background-color: #9C27B0; }
-
-        @keyframes pulse {
-            0% { opacity: 0.3; }
-            50% { opacity: 1; }
-            100% { opacity: 0.3; }
-        }
-
-        /* Additional story view styles */
-        .story-container {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .story-view {
-            display: flex;
-            gap: 20px;
-            padding: 20px;
-            overflow-x: auto;
-            background: #111;
-        }
-
-        .story-card {
-            flex: 0 0 auto;
-            width: 300px;
-            transform: perspective(1000px) rotateY(30deg);
-            transition: transform 0.3s;
-        }
-
-        .story-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .project-content {
-            padding: 40px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .project-info {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .info-section h3 {
-            color: #4fd1c5;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-
-        .info-section p {
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-
-        .other-stories {
-            padding: 40px 5%;
-        }
-
-        .stories-title {
-            font-size: 3rem;
-            margin-bottom: 40px;
-            font-weight: bold;
-        }
-
-        .stories-title span {
-            color: #ffb6c1;
-            display: block;
-        }
-
-        .stories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .story-item {
-            background: #262626;
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .story-item img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .story-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .story-item p {
-            color: #888;
-            margin-bottom: 20px;
-        }
-
-        .open-story-btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: white;
-            color: black;
-            text-decoration: none;
-            border-radius: 24px;
-            font-weight: bold;
-            transition: transform 0.2s;
-        }
-
-        .open-story-btn:hover {
-            transform: translateY(-2px);
-        }
     </style>
 </head>
 <body>
@@ -394,7 +279,7 @@
         </div>
     </div>
     <nav>
-        <div class="logo">G</div>
+        <div class="logo">Blog</div>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="#about">About</a>
@@ -403,18 +288,17 @@
 
     <section class="profile-header">
         <div class="profile-image">
-            <img src="images/WhatsApp Image 2024-11-18 at 16.03.18_bc1261b3.jpg" alt="Kamari">
+            <img src="images/WhatsApp Image 2024-11-18 at 16.03.18_bc1261b3.jpg" alt="Siska">
         </div>
         <div class="profile-info">
             <h1>Siska</h1>
             <div class="role">Reading Book</div>
             <p class="bio">
-                Membaca buku adalah hobi yang bermanfaat karena tidak hanya menghibur
-                tetapi juga memperluas wawasan dan memperkuat kemampuan berpikir. 
-                Melalui buku, seseorang dapat memasuki dunia imajinasi yang memukau 
-                atau mendalami berbagai pengetahuan yang memperkaya pemahaman. 
-                Baik fiksi maupun non-fiksi, membaca memberikan kesempatan untuk 
-                merasakan petualangan baru, memperluas kosakata, serta mengasah empati dan kreativitas.
+                Membaca buku adalah hobi yang bermanfaat karena tidak hanya menghibur tetapi juga memperluas wawasan 
+                dan memperkuat kemampuan berpikir. Melalui buku, seseorang dapat memasuki dunia imajinasi yang memukau 
+                atau mendalami berbagai pengetahuan yang memperkaya pemahaman. Baik fiksi maupun non-fiksi, 
+                membaca memberikan kesempatan untuk merasakan petualangan baru, memperluas kosakata, serta mengasah empati 
+                dan kreativitas.
             </p>
             <div class="social-links">
                 <a href="#">@siskafath</a>
@@ -427,54 +311,62 @@
         <div class="story-grid">
             <div class="story-card">
                 <div class="story-image">
-                    <img src="images/bromo.jpg" alt="Gunung Bromo">
+                    <img src="images/selena.jpg" alt="Selena">
                 </div>
                 <div class="story-content">
-                    <h3>Magisnya Sunrise Bromo</h3>
-                    <p>
-                        Pengalaman tak terlupakan menyaksikan matahari terbit di Gunung Bromo. 
-                        Berangkat pukul 3 pagi dari Cemoro Lawang, mendaki dalam gelap, hingga
-                        akhirnya disambut pemandangan yang memukau di Penanjakan 1.
+                    <h3>Selena</h3>
+                    <p style="text-align: justify;">
+                        Selena adalah novel prekuel dalam serial Bumi karya Tere Liye 
+                        yang menceritakan latar belakang karakter Selena. 
+                        Buku ini mengungkap perjalanan hidup Selena dari masa kecilnya hingga 
+                        akhirnya menjadi salah satu anggota Dewan Kota Zaramaraz yang sangat berpengaruh. 
+                        Dalam kisah ini, Selena menghadapi berbagai tantangan berat yang menguji 
+                        keberanian, kecerdasan, dan rasa tanggung jawabnya. Novel ini memperkenalkan 
+                        banyak elemen baru dalam dunia paralel, memberikan pemahaman yang lebih dalam 
+                        tentang bagaimana peristiwa masa lalu Selena berperan penting dalam membentuk 
+                        dunia dan peristiwa yang dihadapi oleh Raib, Seli, dan Ali dalam cerita utama serial Bumi.
                     </p>
                     <div class="story-meta">
-                        <span>15 Oktober 2023</span>
-                        <span>Bromo, Jawa Timur</span>
                     </div>
                 </div>
             </div>
 
             <div class="story-card">
                 <div class="story-image">
-                    <img src="images/danautoba.jpg" alt="Danau Toba">
+                    <img src="images/nebula.jpg" alt="Nebula">
                 </div>
                 <div class="story-content">
-                    <h3>Pesona Danau Toba</h3>
-                    <p>
-                        Mengeksplor keindahan Danau Toba selama 5 hari. Menginap di homestay
-                        tradisional di Pulau Samosir, belajar tentang budaya Batak, dan
-                        menikmati sunset terbaik dari Bukit Holbung.
+                    <h3>Nebula</h3>
+                    <p style="text-align: justify;">
+                        Nebula adalah novel dalam serial Bumi karya Tere Liye yang melanjutkan petualangan 
+                        Raib, Seli, dan Ali di dunia paralel. Mereka menghadapi ancaman baru yang penuh misteri, 
+                        memaksa mereka menggunakan kekuatan dan kerja sama untuk melindungi banyak dimensi. 
+                        Dalam perjalanan ini, ketiganya harus mengatasi rintangan berbahaya dengan kecerdikan 
+                        dan keberanian mereka, menemukan bahwa ancaman yang dihadapi jauh lebih rumit dari yang dibayangkan. 
+                        Di tengah pertempuran dan petualangan seru, mereka belajar nilai penting dari kepercayaan dan persahabatan 
+                        yang semakin mempererat hubungan mereka.
                     </p>
                     <div class="story-meta">
-                        <span>28 September 2023</span>
-                        <span>Samosir, Sumatera Utara</span>
                     </div>
                 </div>
             </div>
 
             <div class="story-card">
                 <div class="story-image">
-                    <img src="images/rajaampat.jpg" alt="Raja Ampat">
+                    <img src="images/komet minor.jpg" alt="Komet Minor">
                 </div>
                 <div class="story-content">
-                    <h3>Surga di Raja Ampat</h3>
-                    <p>
-                        Petualangan 7 hari menjelajahi kepulauan Raja Ampat. Diving di spot
-                        terbaik dunia, camping di Pulau Wayag, dan berinteraksi dengan
-                        penduduk lokal yang ramah.
+                    <h3>Komet Minor</h3>
+                    <p style="text-align: justify;">
+                        Komet Minor adalah lanjutan dari Nebula dalam serial Bumi karya Tere Liye, yang mengikuti petualangan Raib, Seli, dan Ali 
+                        di dunia paralel. Kali ini, mereka berangkat ke Klan Komet Minor, sebuah dunia penuh misteri dan bahaya, 
+                        untuk menghadapi ancaman yang jauh lebih kuat dan rumit. Di tengah perjalanan, mereka harus mengandalkan kekuatan 
+                        unik mereka dan bekerja sama untuk mengatasi musuh yang mengancam keseimbangan banyak dunia. Selain itu, 
+                        mereka juga mengungkap rahasia baru yang semakin memperkeruh situasi dan menantang ikatan persahabatan mereka. 
+                        Dalam pertempuran yang menegangkan, mereka belajar tentang pengorbanan, keberanian, dan arti sejati dari persahabatan yang 
+                        tak tergoyahkan.
                     </p>
                     <div class="story-meta">
-                        <span>5 Agustus 2023</span>
-                        <span>Raja Ampat, Papua Barat</span>
                     </div>
                 </div>
             </div>
